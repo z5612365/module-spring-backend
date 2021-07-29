@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +18,7 @@ import dto.Greeting;
 @RequestMapping(value = "/greet/")
 public class GreetingController {
 
+    final static Logger log = Logger.getLogger("GreetingController");
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
     @Autowired
@@ -29,7 +31,7 @@ public class GreetingController {
 
     @GetMapping("/userName")
     public String name(@RequestParam(value = "userName", defaultValue = "World") String name) {
-
+        log.info("It's GreetingController name function");
         String quote = restTemplate.getForObject(
                 "https://quoters.apps.pcfone.io/api/random", String.class);
         return name + " AND " + quote;

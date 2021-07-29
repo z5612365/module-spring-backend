@@ -7,13 +7,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
-@ComponentScan(basePackages = {"app", "controller", "dto" })
+@ComponentScan(basePackages = {"app", "controller", "dto", "aop" })
 @Configuration
 @EnableAutoConfiguration
-// @EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 // @ImportResource({
 // "classpath*:/app-context/app-context.xml",
 // })
